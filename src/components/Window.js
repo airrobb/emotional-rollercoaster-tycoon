@@ -141,4 +141,10 @@ export const WindowControlColumn = styled.div`
 
 export const WindowContent = styled.div`
   grid-area: content;
+  border-style: solid;
+  border-width: 2px;
+  border-bottom-color: rgb(255, 255, 255);
+  border-right-color: rgb(255, 255, 255);
+  border-top-color: rgb(5, 6, 8);
+  border-left-color: rgb(5, 6, 8);
 `;
