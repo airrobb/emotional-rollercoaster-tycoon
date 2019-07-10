@@ -13,9 +13,13 @@ export const INITIAL_STATE = {
   resizing: false
 };
 
-export const POSITIONS = {
-  TOP: {},
-  BOTTOM: {},
-  RIGHT: {},
-  LEFT: {}
+const createPositions = () => {
+  const postions = [];
+
+  for (let i = 0; i < 100; i += 100) {
+    const position = {};
+    for (let i = 0; i < 100; i += 100) {}
+  }
 };
+
+export const POSITIONS = {};

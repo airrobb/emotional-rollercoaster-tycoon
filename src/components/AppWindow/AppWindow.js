@@ -1,9 +1,17 @@
 import React from "react";
+import useActions from "../../hooks/useActions";
 
-import { INITIAL_STATE } from "./constants";
+import * as WindowActions from "./actions";
+
+import { INITIAL_STATE, POSITIONS } from "./constants";
 import reducer from "./reducer";
 
-import { Window, WindowTitle, WindowHeader, WindowControl } from "../Window";
+import {
+  Window,
+  WindowHeaderTitle,
+  WindowHeader,
+  WindowHeaderButtons
+} from "../Window";
 import Icon from "../Icon";
 import Button from "../Button";
 
@@ -17,40 +25,37 @@ function AppWindow({
 }) {
   const [state, dispatch] = React.useReducer(reducer, INITIAL_STATE);
   const { dragging, currX, currY, width, height } = state;
-
-  const endDrag = React.useCallback(() => {
-    dispatch({ type: "END_DRAG" });
-  }, [dispatch]);
-
-  const handleMove = React.useCallback(
-    ({ clientX, clientY }) => {
-      dispatch({ type: "UPDATE_POSITION", payload: { clientX, clientY } });
-    },
-    [dispatch]
-  );
+  const {
+    endDrag,
+    startDrag,
+    updatePosition,
+    updateSize,
+    startResize,
+    endResize
+  } = useActions(dispatch, WindowActions);
 
   React.useEffect(() => {
     const removeEvents = () => {
       window.removeEventListener("mouseup", endDrag);
-      window.removeEventListener(`mousemove`, handleMove);
+      window.removeEventListener(`mousemove`, updatePosition);
     };
 
     if (dragging) {
       window.addEventListener("mouseup", endDrag);
-      window.addEventListener(`mousemove`, handleMove);
+      window.addEventListener(`mousemove`, updatePosition);
     } else {
       removeEvents();
     }
 
     return removeEvents;
-  }, [dragging, endDrag, handleMove]);
+  }, [dragging, endDrag, updatePosition]);
 
-  const startDrag = React.useCallback(
-    ({ clientX, clientY }) => {
-      dispatch({ type: "START_DRAG", payload: { clientX, clientY } });
+  const initDrag = React.useCallback(
+    e => {
       toggleWindow(id, true);
+      startDrag(e);
     },
-    [dispatch, toggleWindow, id]
+    [startDrag, toggleWindow, id]
   );
 
   return (
@@ -64,17 +69,17 @@ function AppWindow({
           height: `${height}%`
         }}
       >
-        <WindowHeader onMouseDown={startDrag}>
-          <WindowTitle>
+        <WindowHeader onMouseDown={initDrag}>
+          <WindowHeaderTitle>
             <Icon icon={icon} marginOffset={false} />
             {name}
-          </WindowTitle>
-          <WindowControl>
+          </WindowHeaderTitle>
+          <WindowHeaderButtons>
             <Button onClick={() => toggleWindow(id, false)} square>
               _
             </Button>
             <Button square>X</Button>
-          </WindowControl>
+          </WindowHeaderButtons>
         </WindowHeader>
         {Component && <Component />}
       </Window>

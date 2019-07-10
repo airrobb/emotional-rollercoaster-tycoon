@@ -18,15 +18,8 @@ import WindowsIcon from "../assets/images/win95-icon.png";
 import AimIcon from "../assets/images/aim-icon.png";
 import InternetIcon from "../assets/images/internet.ico";
 import ShoutlookIcon from "../assets/images/shoutlook-icon.png";
-import AngelFire from "../assets/images/heat.gif";
 
-const Geocities = styled.div`
-  height: 100%;
-  width: 100%;
-  background-image: url('${AngelFire}');
-  background-size: 160px 60px;
-  background-position: 0 20px;
-`;
+import Regret from "./Regret";
 
 const WINDOWS = {
   aim: {
@@ -36,16 +29,16 @@ const WINDOWS = {
     y: 0,
     active: true
   },
-  navigator: {
-    name: "RegretScape Navigator",
-    icon: InternetIcon,
-    active: true,
-    component: Geocities
-  },
   outlook: {
     name: "Outlook (Not So Good)",
     icon: ShoutlookIcon,
     active: true
+  },
+  navigator: {
+    name: "RegretScape Navigator",
+    icon: InternetIcon,
+    active: true,
+    component: Regret
   }
 };
 
