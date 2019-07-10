@@ -1,5 +1,5 @@
 // Fonts
-import msSansW2 from "./../assets/fonts/MS-Sans-Serif.woff2";
+// import msSansW2 from "./../assets/fonts/MS-Sans-Serif.woff2";
 import msSansW from "./../assets/fonts/MS-Sans-Serif.woff";
 import msSansEOT from "./../assets/fonts/MS-Sans-Serif.eot";
 import msSansTT from "./../assets/fonts/MS-Sans-Serif.ttf";
@@ -10,7 +10,6 @@ export const MsSansSerif = `
     font-family: 'MS Sans Serif';
     src: url('${msSansEOT}.eot');
     src: url('${msSansEOT}?#iefix') format('embedded-opentype'),
-        url('${msSansW2}') format('woff2'),
         url('${msSansW}') format('woff'),
         url('${msSansTT}') format('truetype'),
         url('${msSansSVG}#MS-Sans-Serif') format('svg');
