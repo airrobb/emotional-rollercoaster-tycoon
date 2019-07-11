@@ -22,29 +22,31 @@ import ShoutlookIcon from "../assets/images/shoutlook-icon.png";
 import Regret from "./Regret";
 
 const WINDOWS = {
-  aim: {
-    name: "Sinstant Messenger",
-    icon: AimIcon,
-    x: 0,
-    y: 0,
-    active: true
+  navigator: {
+    name: "RegretScape Navigator",
+    icon: InternetIcon,
+    active: true,
+    component: Regret
   },
   outlook: {
     name: "Outlook (Not So Good)",
     icon: ShoutlookIcon,
     active: true
   },
-  navigator: {
-    name: "RegretScape Navigator",
-    icon: InternetIcon,
-    active: true,
-    component: Regret
+  aim: {
+    name: "Sinstant Messenger",
+    icon: AimIcon,
+    x: 0,
+    y: 0,
+    active: true
   }
 };
 
 export default function Game() {
   const [windows, updateWindows] = React.useState(WINDOWS);
-  const [windowOrder, setWindowOrder] = React.useState(Object.keys(WINDOWS));
+  const [windowOrder, setWindowOrder] = React.useState(
+    Object.keys(WINDOWS).reverse()
+  );
 
   const toggleWindow = React.useCallback(
     (id, active) => {

@@ -24,6 +24,11 @@ const HotHotHeat = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 10rem;
+  text-transform: uppercase;
+
+  @media (max-width: 767px) {
+    font-size: 20vw;
+  }
 `;
 
 function Regret(props) {
