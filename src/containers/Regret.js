@@ -19,12 +19,15 @@ const HotHotHeat = styled.div`
   width: 100%;
   background-image: url('${AngelFire}');
   background-size: 160px 60px;
-  background-position: 0 20px;
+  background-position: bottom;
+  background-repeat: repeat-x;
   display: grid;
-  align-items: center;
+  grid-auto-rows: max-content;
+  align-content: center;
   justify-content: center;
-  font-size: 10rem;
-  text-transform: uppercase;
+  font-size: 4rem;
+  background-color: white;
+  text-align: center;
 
   @media (max-width: 767px) {
     font-size: 20vw;
@@ -42,7 +45,8 @@ function Regret(props) {
             options={[
               {
                 text: "For Divorce",
-                onClick: () => alert("lol too late")
+                onClick: () =>
+                  alert("Hah like anyone would marry you in the first place")
               },
               {
                 text: "Your Taxes",
@@ -54,7 +58,25 @@ function Regret(props) {
               }
             ]}
           />
-          <WindowControlMenuItem>Edit</WindowControlMenuItem>
+          <FlyoutMenu
+            component={<WindowControlMenuItem>Edit</WindowControlMenuItem>}
+            options={[
+              {
+                text: "Your Resume",
+                onClick: () =>
+                  alert(
+                    "Just say you to got a masters in medieval literature and you're all set"
+                  )
+              },
+              {
+                text: "Your Last Will annd Testament",
+                onClick: () =>
+                  alert(
+                    "Thanks for willing everything to your personal browsing assistant bucko."
+                  )
+              }
+            ]}
+          />
         </WindowControlRow>
         <WindowControlRow>
           <WindowControlDivider />
@@ -70,7 +92,10 @@ function Regret(props) {
         </WindowControlRow>
       </WindowControl>
       <WindowContent>
-        <HotHotHeat>This is Fine</HotHotHeat>
+        <HotHotHeat>
+          <h1 style={{ margin: "0px" }}>Take a seat</h1>
+          <h5 style={{ margin: "0px" }}>You might be here for a while</h5>
+        </HotHotHeat>
       </WindowContent>
     </React.Fragment>
   );
