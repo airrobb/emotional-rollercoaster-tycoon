@@ -3,12 +3,22 @@ import React from "react";
 import Game from "./containers/Game";
 //Styles
 import Global from "./styles/global";
+import Robbie from "./components/Robbie";
+import Quotes from "./components/Robbie/defaultPrompts";
+
+const filteredQuotes = Quotes.filter(({ tags }) => !tags.includes("murderer"));
 
 function App() {
   return (
     <React.Fragment>
       <Global />
       <Game />
+      <Robbie
+        prompts={filteredQuotes}
+        key={filteredQuotes.length}
+        delay={7000}
+        scale={1}
+      />
     </React.Fragment>
   );
 }
