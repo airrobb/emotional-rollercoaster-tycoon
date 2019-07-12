@@ -6,7 +6,7 @@ import Global from "./styles/global";
 import Robbie from "./components/Robbie";
 import Quotes from "./components/Robbie/defaultPrompts";
 
-const filteredQuotes = Quotes.filter(({ tags }) => !tags.includes("murderer"));
+const filteredQuotes = Quotes.filter(({ tags }) => tags.includes("scam"));
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       <Robbie
         prompts={filteredQuotes}
         key={filteredQuotes.length}
-        delay={7000}
+        delay={10000}
         scale={1}
       />
     </React.Fragment>
