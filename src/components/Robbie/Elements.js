@@ -13,7 +13,7 @@ export const Widget = styled.div`
   width: 20em;
   height: 20em;
   right: 0em;
-  bottom: 2em;
+  bottom: 5em;
   z-index: 10;
   font-size: ${({ size }) => `${size}px`};
 `;

@@ -13,12 +13,12 @@ function App() {
     <React.Fragment>
       <Global />
       <Game />
-      <Robbie
+      {/* <Robbie
         prompts={filteredQuotes}
         key={filteredQuotes.length}
         delay={10000}
         scale={1}
-      />
+      /> */}
     </React.Fragment>
   );
 }

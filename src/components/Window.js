@@ -97,7 +97,6 @@ const getPadding = ({ padding }) => {
 
 export const WindowControlRow = styled.div`
   display: flex;
-  padding: 0 0.5rem;
   align-item: center;
   border-top: 1px solid rgb(255, 255, 255);
   border-bottom: 1px solid rgb(136, 140, 143);

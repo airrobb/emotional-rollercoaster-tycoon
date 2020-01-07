@@ -1,7 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-
-import AngelFire from "../assets/images/heat.gif";
 
 import {
   WindowContent,
@@ -13,29 +10,8 @@ import {
 } from "../components/Window";
 import { Input } from "../components/FormElements";
 import FlyoutMenu from "../components/FlyoutMenu";
-import Inset from "../components/Inset";
 
-const HotHotHeat = styled.div`
-  height: 100%;
-  width: 100%;
-  background-image: url('${AngelFire}');
-  background-size: 160px 60px;
-  background-position: bottom;
-  background-repeat: repeat-x;
-  display: grid;
-  grid-auto-rows: max-content;
-  align-content: center;
-  justify-content: center;
-  font-size: 4rem;
-  background-color: white;
-  text-align: center;
-
-  @media (max-width: 767px) {
-    font-size: 20vw;
-  }
-`;
-
-function Regret(props) {
+function SalesHorse(props) {
   return (
     <React.Fragment>
       <WindowControl>
@@ -85,26 +61,16 @@ function Regret(props) {
             &nbsp; &nbsp;Address
           </WindowControlColumn>
           <WindowControlColumn size="fill">
-            <Input value="https://www.hell.com" />
+            <Input value="https://www.saleshorse.com" />
           </WindowControlColumn>
           {/* <WindowControlColumn>
             <Button>Go</Button>
           </WindowControlColumn> */}
         </WindowControlRow>
       </WindowControl>
-      <WindowContent>
-        <HotHotHeat>
-          <h1 style={{ margin: "0px" }}>Take a seat</h1>
-          <h5 style={{ margin: "0px" }}>You might be here for a while</h5>
-        </HotHotHeat>
-      </WindowContent>
-      <WindowControlRow>
-        <WindowControlColumn size="fill">
-          <Inset>Loading - Viruses</Inset>
-        </WindowControlColumn>
-      </WindowControlRow>
+      <WindowContent>Sales Force Clone;</WindowContent>
     </React.Fragment>
   );
 }
 
-export default Regret;
+export default SalesHorse;
