@@ -1,46 +1,27 @@
 import React from "react";
-import styled from "styled-components";
+
+// Constants;
+import WINDOWS from "./windows";
 
 // Containers
-import Desktop from "./Desktop";
+import Desktop from "../Desktop";
 
 //Components
-import { Main, Navigation } from "../components/Layout";
-
-import { AppBar, AppTabs, AppMenu, AppControl } from "../components/AppBar";
-import Button from "../components/Button";
-import Inset from "../components/Inset";
-import Icon from "../components/Icon";
-import Clock from "../components/Clock";
+import { Main, Navigation } from "../../components/Layout";
+import { AppBar, AppTabs, AppMenu, AppControl } from "../../components/AppBar";
+import Button from "../../components/Button";
+import Inset from "../../components/Inset";
+import Icon from "../../components/Icon";
+import Clock from "../../components/Clock";
 
 // Images
-import WindowsIcon from "../assets/images/win95-icon.png";
-import AimIcon from "../assets/images/aim-icon.png";
-import InternetIcon from "../assets/images/internet.ico";
-import ShoutlookIcon from "../assets/images/shoutlook-icon.png";
+import WindowsIcon from "../../assets/images/win95-icon.png";
 
-import Regret from "./Regret";
+import FlyoutMenu from "../../components/FlyoutMenu";
+import Robbie from "../../components/Robbie/index";
+import RobbiePrompts from "../../components/Robbie/defaultPrompts";
 
-const WINDOWS = {
-  navigator: {
-    name: "RegretScape Navigator",
-    icon: InternetIcon,
-    active: true,
-    component: Regret
-  },
-  outlook: {
-    name: "Outlook (Not So Good)",
-    icon: ShoutlookIcon,
-    active: true
-  },
-  aim: {
-    name: "Sinstant Messenger",
-    icon: AimIcon,
-    x: 0,
-    y: 0,
-    active: true
-  }
-};
+const usedPrompts = RobbiePrompts;
 
 export default function Game() {
   const [windows, updateWindows] = React.useState(WINDOWS);
@@ -72,8 +53,6 @@ export default function Game() {
     [windows, updateWindows, windowOrder, setWindowOrder]
   );
 
-  const updatePosition = React.useCallback();
-
   return (
     <React.Fragment>
       <Main>
@@ -86,10 +65,33 @@ export default function Game() {
       <Navigation>
         <AppBar>
           <AppMenu>
-            <Button>
-              <Icon icon={WindowsIcon} />
-              Start
-            </Button>
+            <FlyoutMenu
+              component={
+                <Button>
+                  <Icon icon={WindowsIcon} />
+                  Start
+                </Button>
+              }
+              options={[
+                {
+                  text: "That novel you always said you would write",
+                  onClick: () => alert("Hahahaha oh man, good one.")
+                },
+                {
+                  text: "Going to the gym and dieting",
+                  onClick: () =>
+                    alert(
+                      "Your previous gym still has a debt collection agency going after you, try resolving that first."
+                    )
+                },
+                {
+                  text: "Really focusing on 'you' this year.",
+                  onClick: () =>
+                    alert("Narcissism is what got you here in the first place.")
+                }
+              ]}
+              position="top"
+            />
           </AppMenu>
           <AppTabs>
             {Object.keys(windows).map(id => {
@@ -114,6 +116,7 @@ export default function Game() {
           </AppControl>
         </AppBar>
       </Navigation>
+      <Robbie prompts={usedPrompts} delay={7000} scale={1} />
     </React.Fragment>
   );
 }

@@ -11,6 +11,17 @@ const FlyoutContainer = styled.div`
   position: relative;
 `;
 
+const POSITIONS = {
+  top: `
+    bottom: 100%;
+  `,
+  bottom: `
+    bottom: 0;
+  `
+};
+
+const getPosition = ({ position }) => POSITIONS[position];
+
 const FlyoutList = styled.ul`
   display: ${({ expanded }) => (expanded ? "block" : "none")};
   margin: 0;
@@ -25,20 +36,21 @@ const FlyoutList = styled.ul`
   list-style: none;
   position: absolute;
   left: 0;
+  ${getPosition}
 `;
 
 const FlyoutListItem = styled.li`
   padding: 0.5rem;
+  cursor: pointer;
 
   &:hover {
     color: rgb(255, 255, 255);
-    cursor: default;
     background: rgb(0, 0, 128);
   }
 `;
 
 function FlyoutMenu(props) {
-  const { component, options } = props;
+  const { component, options, position } = props;
   const [expanded, setExpanded] = useState(false);
   const parent = useRef();
 
@@ -73,7 +85,7 @@ function FlyoutMenu(props) {
   return (
     <FlyoutContainer>
       {Component}
-      <FlyoutList ref={parent} expanded={expanded}>
+      <FlyoutList ref={parent} expanded={expanded} position={position}>
         {options.map(({ text, onClick }) => {
           return (
             <FlyoutListItem key={text} onClick={onClick}>
